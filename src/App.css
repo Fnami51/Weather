@@ -70,21 +70,45 @@ b{
 .search-item{
     height: 40px;
     text-align: center;
-    font-size: 24px;
     border-radius: 18px;
     border: none;
 }
 
 .search-input{
     background-color: #d2f5fb;
+    font-size: 24px;
     color: #00151d;
     box-shadow: 4px 5px 22px 6px rgba(13,  130,  197, 0.5) inset;
+}
+
+.search-select{
+    background-color: #d2f5fb;
+    height: 30px;
+    font-size: 16px;
+    color: #00151d;
+    box-shadow: 4px 5px 22px 6px rgba(13,  130,  197, 0.5) inset;
+}
+
+.select-value{
+    color: #00151d;
+    font-weight: 600;
+}
+
+.select-value_default{
+    color: darkgrey;
+    font-size: 300;
+}
+
+.select-value_none{
+    color: gray;
+    font-size: 500;
 }
 
 .search-button{
     background-color: lawngreen;
     width: 150px;
     font-weight: 600;
+    font-size: 24px;
     color: darkgreen;
     box-shadow: 4px 5px 35px 6px rgba(0,  0,  0, 0.31) inset;
 }

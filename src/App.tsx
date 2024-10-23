@@ -5,12 +5,12 @@ import Error from "./components/Error";
 import { WeatherResponce } from "./types/weather";
 import { weatherRequest } from "./api/getRequest";
 import React from "react";
+import { countries } from "./hooks/conrties";
 
 function App() {
   const [resultSearch, setResultSearch] = useState<WeatherResponce | null>(null);
   const [error, setError] = useState<{ error: string; description: string } | null>(null);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async function handleSearch(event: any) {
     event.preventDefault();
     try {
@@ -41,13 +41,23 @@ function App() {
             placeholder="City (necessarily)"
             required
           />
-          <input
-            className="search-item search-input"
-            type="text"
+          <select
+            className="search-item search-select"
             name="search_location_country"
             id="search_location_country"
-            placeholder="Country"
-          />
+          >
+            <option value="" disabled selected className="select-value_default">
+              Select a country
+            </option>
+            <option value="" disabled selected className="select-value_none">
+              Don't know contry
+            </option>
+            {Object.entries(countries).map(([code, country]) => (
+              <option key={code} value={code} className="select-value">
+                <h3>{country}</h3>
+              </option>
+            ))}
+          </select>
           <button className="search-item search-button" id="formEnter" type="submit">
             Search
           </button>

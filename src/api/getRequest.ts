@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function weatherRequest(city: string, country?: string): Promise<any> {
   if (!navigator.onLine) {
     throw new Error('You are not connected to the Internet');
@@ -38,7 +37,7 @@ export async function weatherRequest(city: string, country?: string): Promise<an
       }
     } else {
       if (response.status === 204) {
-        throw new Error('Most likely there is no such city');
+        throw new Error('There may be no such city or the country is incorrectly specified.');
       }
     }
 
