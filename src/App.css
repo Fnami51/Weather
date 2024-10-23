@@ -94,13 +94,22 @@ b{
     font-weight: 600;
 }
 
+.select-value-null{
+    color: rgb(134, 165, 206);
+}
+
 .select-value_default{
     color: darkgrey;
     font-size: 300;
 }
 
+.select-value_default_with-contry{
+    color: #577681;
+    font-size: 500;
+}
+
 .select-value_none{
-    color: gray;
+    color: #00151d;
     font-size: 500;
 }
 

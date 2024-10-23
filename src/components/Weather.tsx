@@ -15,7 +15,7 @@ function Weather({weather}: WeatherProps) {
       <div className="weather-items">
         <div className="weather-textbox">
           <h1>{weather.data[0].weather.description}</h1>
-          <h3>📍{weather.city_name}{getCountryName(weather.country_code)}</h3>
+          <h3>{`📍${weather.city_name}, ${getCountryName(weather.country_code)}`}</h3>
           <h1>{weather.data[0].temp}°C</h1>
           <h4>Feels like {weather.data[0].app_min_temp}°C - {weather.data[0].app_max_temp}°C</h4>
         </div>

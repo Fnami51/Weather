@@ -6,20 +6,26 @@ import { WeatherResponce } from "./types/weather";
 import { weatherRequest } from "./api/getRequest";
 import React from "react";
 import { countries } from "./hooks/conrties";
+import { getCountryName } from "./hooks/getContryName";
 
 function App() {
   const [resultSearch, setResultSearch] = useState<WeatherResponce | null>(null);
   const [error, setError] = useState<{ error: string; description: string } | null>(null);
+  const [selectedCity, setSelectedCity] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState("");
 
   async function handleSearch(event: any) {
     event.preventDefault();
     try {
       setError(null); 
       const city = event.target.elements.search_location_city.value;
-      const country = event.target.elements.search_location_country.value;
+      const country = selectedCountry;
 
-      const data = await weatherRequest(city, country);
+      const data : WeatherResponce = await weatherRequest(city, country.replace("0", ""));
       setResultSearch(data); 
+      event.target.elements.search_location_city.value = "";
+      setSelectedCountry("")
+      setSelectedCity(data.city_name)
     } catch (error: unknown) {
       console.error('Ошибка', error);
       setError({
@@ -38,23 +44,28 @@ function App() {
             type="text"
             name="search_location_city"
             id="search_location_city"
-            placeholder="City (necessarily)"
+            placeholder={selectedCity? selectedCity: "City (necessarily)"}
             required
           />
           <select
-            className="search-item search-select"
+            className={`search-item search-select ${!selectedCountry ? 'select-value-null' : ''} ${resultSearch ? 'select-value_default_with-contry' : ''}`}
             name="search_location_country"
             id="search_location_country"
+            value={selectedCountry}
+            onChange={(e) => setSelectedCountry(e.target.value)}
           >
             <option value="" disabled selected className="select-value_default">
-              Select a country
+              {resultSearch? getCountryName(resultSearch.country_code) : "Select country"}
             </option>
-            <option value="" disabled selected className="select-value_none">
-              Don't know contry
+            <option value="0" className="select-value_none">
+              Don't know country
+            </option>
+            <option value="" disabled>
+            ———————————————
             </option>
             {Object.entries(countries).map(([code, country]) => (
               <option key={code} value={code} className="select-value">
-                <h3>{country}</h3>
+                {country} 
               </option>
             ))}
           </select>
