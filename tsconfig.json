@@ -4,9 +4,12 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "strict": true,
-    "module": "commonjs",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "module": "esnext",
     "target": "esnext",
-    "types": ["jest", "node"]
+    "types": ["jest", "node"],
+    "moduleResolution": "bundler"
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "jest.config.js"], 
   "exclude": ["node_modules", "dist"]
