@@ -21,7 +21,7 @@ function App() {
       const city = event.target.elements.search_location_city.value;
       const country = selectedCountry;
 
-      const data : WeatherResponce = await weatherRequest(city, country.replace("0", ""));
+      const data : WeatherResponce = await weatherRequest(city.replace(" ", "%20") , country.replace("0", ""));
       setResultSearch(data); 
       event.target.elements.search_location_city.value = "";
       setSelectedCountry("")
@@ -60,7 +60,7 @@ function App() {
             <option value="0" className="select-value_none">
               Don't know country
             </option>
-            <option value="" disabled>
+            <option disabled>
             ———————————————
             </option>
             {Object.entries(countries).map(([code, country]) => (
