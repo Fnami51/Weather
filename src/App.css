@@ -145,12 +145,10 @@ b{
     width: 5px; 
 }
 
-.weather::-webkit-scrollbar:hover {
-    width: 7px; 
-}
-
 .weather::-webkit-scrollbar-track {
     background: transparent; 
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .weather::-webkit-scrollbar-thumb {
