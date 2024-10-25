@@ -20,7 +20,7 @@ function Weather({weather}: WeatherProps) {
           <h4>Feels like {weather.data[0].app_min_temp}°C - {weather.data[0].app_max_temp}°C</h4>
         </div>
         <div className="weather-image">
-          <img src={`/icon/${weather.data[0].weather.icon}.png`} width={150} height={150}/>
+          <img src={`icon/${weather.data[0].weather.icon}.png`} width={150} height={150}/>
         </div>
       </div>
       <div className="weather-items">
