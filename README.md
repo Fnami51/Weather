@@ -1,4 +1,4 @@
-# Light Weather
+# Easy Weather
 
 Mini application allows you to find out the weather in any city in the world. Responsive design will be convenient on any device. Due to the fact that free Weather API is used. Users can make 50 requests per day.
 
